@@ -1,9 +1,19 @@
+# Depends on fizz, which has linking issues on some platforms:
+# https://bugzilla.redhat.com/show_bug.cgi?id=1893332
+%ifarch i686 x86_64
+%bcond_without static
+%else
+%bcond_with static
+%endif
+
 # Tests are not currently passing
 %bcond_with tests
 
+%global _static_builddir static_build
+
 Name:           wangle
 Version:        2020.10.26.00
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        ASL 2.0
@@ -20,6 +30,10 @@ BuildRequires:  gcc-c++
 # Library dependencies
 BuildRequires:  fizz-devel
 BuildRequires:  folly-devel
+%if %{with static}
+BuildRequires:  fizz-static
+BuildRequires:  folly-static
+%endif
 
 %description
 Wangle is a library that makes it easy to build protocols, application clients,
@@ -37,20 +51,58 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 
+%if %{with static}
+%package        static
+Summary:        Static development libraries for %{name}
+Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
+
+%description    static
+The %{name}-static package contains static libraries for
+developing applications that use %{name}.
+%endif
+
+
 %prep
 %autosetup -c -p1
 
 
 %build
 %cmake wangle \
+%if %{with tests}
+  -DBUILD_TESTS=ON \
+%else
+  -DBUILD_TESTS=OFF \
+%endif
   -DCMAKE_INSTALL_DIR=%{_libdir}/cmake/%{name} \
   -DPACKAGE_VERSION=%{version} \
   -DSO_VERSION=%{version}
 %cmake_build
 
+%if %{with static}
+# static build
+mkdir %{_static_builddir}
+cd %{_static_builddir}
+%cmake ../wangle \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DBUILD_TESTS=OFF \
+  -DCMAKE_INSTALL_DIR=%{_libdir}/cmake/%{name}-static \
+  -DFIZZ_ROOT=%{_libdir}/cmake/fizz-static \
+  -DFOLLY_ROOT=%{_libdir}/cmake/folly-static \
+  -DPACKAGE_VERSION=%{version}
+%cmake_build
+%endif
+
 
 %install
+%if %{with static}
+# static build
+pushd %{_static_builddir}
 %cmake_install
+popd
+%endif
+
+%cmake_install
+
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
@@ -70,8 +122,17 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_libdir}/*.so
 %{_libdir}/cmake/%{name}
 
+%if %{with static}
+%files static
+%{_libdir}/*.a
+%{_libdir}/cmake/%{name}-static
+%endif
+
 
 %changelog
+* Fri Oct 30 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.10.26.00-3
+- Enable static subpackage on architectures where fizz-static is available
+
 * Wed Oct 28 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.10.26.00-2
 - Add ExcludeArch on s390x due to dependency on folly
 
