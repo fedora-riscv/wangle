@@ -12,14 +12,13 @@
 %global _static_builddir static_build
 
 Name:           wangle
-Version:        2020.10.26.00
-Release:        3%{?dist}
+Version:        2020.11.02.00
+Release:        1%{?dist}
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        ASL 2.0
 URL:            https://github.com/facebook/wangle
 Source0:        %{url}/releases/download/v%{version}/%{name}-v%{version}.tar.gz
-Patch0:         %{url}/commit/101e328981ddc7c7c6601f9cbb7eb9b2de38ef79.patch#/%{name}-%{version}-allow_overriding_version.patch
 
 # Folly is known not to work on big-endian CPUs
 # https://bugzilla.redhat.com/show_bug.cgi?id=1892807
@@ -130,6 +129,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Nov  2 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.11.02.00-1
+- Update to 2020.11.02.00
+
 * Fri Oct 30 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.10.26.00-3
 - Enable static subpackage on architectures where fizz-static is available
 
