@@ -12,7 +12,7 @@
 %global _static_builddir static_build
 
 Name:           wangle
-Version:        2020.11.30.00
+Version:        2020.12.14.00
 Release:        1%{?dist}
 Summary:        Framework for building services in a consistent/modular/composable way
 
@@ -129,6 +129,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Dec 14 15:13:17 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.12.14.00-1
+- Update to 2020.12.14.00
+
 * Mon Nov 30 10:42:48 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.11.30.00-1
 - Update to 2020.11.30.00
 
