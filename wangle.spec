@@ -12,7 +12,7 @@
 %global _static_builddir static_build
 
 Name:           wangle
-Version:        2021.04.26.00
+Version:        2021.05.10.00
 Release:        1%{?dist}
 Summary:        Framework for building services in a consistent/modular/composable way
 
@@ -129,6 +129,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Mon May 10 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.05.10.00-1
+- Update to 2021.05.10.00
+
 * Mon Apr 26 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.04.26.00-1
 - Update to 2021.04.26.00
 
