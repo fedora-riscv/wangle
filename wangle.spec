@@ -12,8 +12,8 @@
 %global _static_builddir static_build
 
 Name:           wangle
-Version:        2021.06.28.00
-Release:        2%{?dist}
+Version:        2021.07.22.00
+Release:        1%{?dist}
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        ASL 2.0
@@ -129,6 +129,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Sat Jul 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.07.22.00-1
+- Update to 2021.07.22.00
+
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2021.06.28.00-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
