@@ -13,7 +13,7 @@
 
 Name:           wangle
 Version:        2021.07.22.00
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        ASL 2.0
@@ -129,6 +129,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Jul 27 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.07.22-00-2
+- Rebuilt for folly 2021.07.22.00
+
 * Sat Jul 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.07.22.00-1
 - Update to 2021.07.22.00
 
