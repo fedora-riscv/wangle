@@ -15,8 +15,8 @@
 %global build_cxxflags -std=c++20 %{optflags}
 
 Name:           wangle
-Version:        2021.08.02.00
-Release:        2%{?dist}
+Version:        2021.11.08.00
+Release:        1%{?dist}
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        ASL 2.0
@@ -132,6 +132,9 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Fri Nov 12 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.11.08.00-1
+- Update to 2021.11.08.00
+
 * Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 2021.08.02.00-2
 - Rebuilt with OpenSSL 3.0.0
 
