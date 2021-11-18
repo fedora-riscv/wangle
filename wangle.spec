@@ -16,7 +16,7 @@
 
 Name:           wangle
 Version:        2021.11.15.00
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        ASL 2.0
@@ -132,86 +132,4 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
-* Thu Nov 18 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.11.15.00-1
-- Update to 2021.11.15.00
-
-* Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 2021.08.02.00-2
-- Rebuilt with OpenSSL 3.0.0
-
-* Thu Aug  5 2021 Filipe Brandenburger <filbranden@gmail.com> - 2021.08.02.00-1
-- Update to 2021.08.02.00
-
-* Thu Jul 29 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.07.22.00-3
-- Use C++20 standard, in order to enable C++ coroutines
-
-* Tue Jul 27 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.07.22-00-2
-- Rebuilt for folly 2021.07.22.00
-
-* Sat Jul 24 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.07.22.00-1
-- Update to 2021.07.22.00
-
-* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2021.06.28.00-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Mon Jul 12 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.06.28.00-1
-- Update to 2021.06.28.00
-
-* Wed Jun 09 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.06.07.00-1
-- Update to 2021.06.07.00
-
-* Mon May 10 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.05.10.00-1
-- Update to 2021.05.10.00
-
-* Mon Apr 26 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.04.26.00-1
-- Update to 2021.04.26.00
-
-* Fri Apr 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.04.12.00-1
-- Update to 2021.04.12.00
-
-* Mon Mar 29 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.03.29.00-1
-- Update to 2021.03.29.00
-
-* Wed Mar 24 2021 Michel Alexandre Salim <michel@michel-slm.name> - 2021.03.22.00-1
-- Update to 2021.03.22.00
-
-* Mon Mar 15 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.03.15.00-1
-- Update to 2021.03.15.00
-
-* Wed Feb 03 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.02.01.00-1
-- Update to 2021.02.01.00
-
-* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2021.01.25.00-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Tue Jan 26 17:49:34 PST 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 2021.01.25.00-1
-- Update to 2021.01.25.00
-
-* Tue Dec 29 12:15:28 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.12.28.00-1
-- Update to 2020.12.28.00
-
-* Tue Dec 22 16:56:57 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.12.21.00-1
-- Update to 2020.12.21.00
-
-* Mon Nov 30 10:42:48 PST 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.11.30.00-1
-- Update to 2020.11.30.00
-
-* Mon Nov 23 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.11.23.00-1
-- Update to 2020.11.23.00
-
-* Mon Nov 16 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.11.16.00-1
-- Update to 2020.11.16.00
-
-* Mon Nov  9 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.11.09.00-1
-- Update to 2020.11.09.00
-
-* Mon Nov  2 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.11.02.00-1
-- Update to 2020.11.02.00
-
-* Fri Oct 30 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.10.26.00-3
-- Enable static subpackage on architectures where fizz-static is available
-
-* Wed Oct 28 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.10.26.00-2
-- Add ExcludeArch on s390x due to dependency on folly
-
-* Mon Oct 26 2020 Michel Alexandre Salim <salimma@fedoraproject.org> - 2020.10.26.00-1
-- Initial package
+%autochangelog
