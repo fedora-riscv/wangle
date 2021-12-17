@@ -15,7 +15,7 @@
 %global build_cxxflags -std=c++20 %{optflags}
 
 Name:           wangle
-Version:        2021.11.15.00
+Version:        2021.11.29.00
 Release:        %autorelease
 Summary:        Framework for building services in a consistent/modular/composable way
 
