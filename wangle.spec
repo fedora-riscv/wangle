@@ -11,9 +11,6 @@
 
 %global _static_builddir static_build
 
-# Use C++20 standard, required for folly coroutines.
-%global build_cxxflags -std=c++20 %{optflags}
-
 Name:           wangle
 Version:        2021.11.29.00
 Release:        %autorelease
