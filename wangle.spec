@@ -12,7 +12,7 @@
 %global _static_builddir static_build
 
 Name:           wangle
-Version:        2021.12.20.00
+Version:        2022.01.17.00
 Release:        %autorelease
 Summary:        Framework for building services in a consistent/modular/composable way
 
