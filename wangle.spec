@@ -12,7 +12,7 @@
 %global _static_builddir static_build
 
 Name:           wangle
-Version:        2022.01.17.00
+Version:        2022.02.21.00
 Release:        %autorelease
 Summary:        Framework for building services in a consistent/modular/composable way
 
@@ -29,11 +29,11 @@ ExcludeArch:    s390x
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 # Library dependencies
-BuildRequires:  fizz-devel
-BuildRequires:  folly-devel
+BuildRequires:  fizz-devel = %{version}
+BuildRequires:  folly-devel = %{version}
 %if %{with static}
-BuildRequires:  fizz-static
-BuildRequires:  folly-static
+BuildRequires:  fizz-static = %{version}
+BuildRequires:  folly-static = %{version}
 %endif
 %if %{with tests}
 BuildRequires:  gmock-devel
