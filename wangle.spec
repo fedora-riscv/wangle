@@ -7,21 +7,20 @@
 %endif
 
 # Tests are not currently passing
-%bcond_with tests
+%bcond_without tests
 
 %global _static_builddir static_build
 
-# Use C++20 standard, required for folly coroutines.
-%global build_cxxflags -std=c++20 %{optflags}
-
 Name:           wangle
-Version:        2021.11.29.00
+Version:        2022.02.21.00
 Release:        %autorelease
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        ASL 2.0
 URL:            https://github.com/facebook/wangle
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+# disable failing tests, see patch for context
+Patch0:         %{name}-disable_failed_tests.patch
 
 # Folly is known not to work on big-endian CPUs
 # https://bugzilla.redhat.com/show_bug.cgi?id=1892807
@@ -30,25 +29,32 @@ ExcludeArch:    s390x
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 # Library dependencies
-BuildRequires:  fizz-devel
-BuildRequires:  folly-devel
+BuildRequires:  fizz-devel = %{version}
+BuildRequires:  folly-devel = %{version}
 %if %{with static}
-BuildRequires:  fizz-static
-BuildRequires:  folly-static
+BuildRequires:  fizz-static = %{version}
+BuildRequires:  folly-static = %{version}
+%endif
+%if %{with tests}
+BuildRequires:  gmock-devel
+BuildRequires:  gtest-devel
 %endif
 
-%description
+
+%global _description %{expand:
 Wangle is a library that makes it easy to build protocols, application clients,
 and application servers.
 
-It's like Netty + Finagle smooshed together, but in C++.
+It's like Netty + Finagle smooshed together, but in C++.}
+
+%description %{_description}
 
 
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
-%description    devel
+%description    devel %{_description}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
@@ -58,7 +64,8 @@ developing applications that use %{name}.
 Summary:        Static development libraries for %{name}
 Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
 
-%description    static
+%description    static %{_description}
+
 The %{name}-static package contains static libraries for
 developing applications that use %{name}.
 %endif
