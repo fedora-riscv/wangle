@@ -5,6 +5,10 @@
 %bcond_with toolchain_clang
 %endif
 
+%if %{with toolchain_clang}
+%global toolchain clang
+%endif
+
 %bcond_without check
 
 Name:           wangle
