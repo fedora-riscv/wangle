@@ -12,7 +12,7 @@
 %bcond_without check
 
 Name:           wangle
-Version:        2022.02.28.00
+Version:        2022.03.07.00
 Release:        %autorelease
 Summary:        Framework for building services in a consistent/modular/composable way
 
@@ -21,8 +21,6 @@ URL:            https://github.com/facebook/wangle
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # disable failing tests, see patch for context
 Patch0:         %{name}-disable_failed_tests.patch
-# PROJECT_VERSION strips leading 0s
-Patch1:         %{name}-make_version_consistent.patch
 
 # Folly is known not to work on big-endian CPUs
 # https://bugzilla.redhat.com/show_bug.cgi?id=1892807
