@@ -1,9 +1,7 @@
-%if 0%{?fedora} == 36
-# Folly is compiled with Clang
-%bcond_without toolchain_clang
-%else
 %bcond_with toolchain_clang
-%endif
+
+# use this to re-test running all tests
+%bcond_with all_tests
 
 %if %{with toolchain_clang}
 %global toolchain clang
@@ -12,7 +10,7 @@
 %bcond_without check
 
 Name:           wangle
-Version:        2022.03.14.00
+Version:        2022.07.11.00
 Release:        %autorelease
 Summary:        Framework for building services in a consistent/modular/composable way
 
@@ -20,15 +18,11 @@ License:        ASL 2.0
 URL:            https://github.com/facebook/wangle
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # disable failing tests, see patch for context
+%if %{without all_tests}
 Patch0:         %{name}-disable_failed_tests.patch
-
-# Folly is known not to work on big-endian CPUs
-# https://bugzilla.redhat.com/show_bug.cgi?id=1892807
-ExcludeArch:    s390x
-%if 0%{?fedora} == 36
-# fmt code breaks: https://bugzilla.redhat.com/show_bug.cgi?id=2061022
-ExcludeArch:    ppc64le
 %endif
+
+ExclusiveArch:   x86_64 aarch64 ppc64le
 
 BuildRequires:  cmake
 %if %{with toolchain_clang}
