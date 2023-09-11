@@ -1,7 +1,6 @@
-diff -ruN wangle-2021.12.20.00/wangle/bootstrap/test/BootstrapTest.cpp wangle-disable_failed_tests/wangle/bootstrap/test/BootstrapTest.cpp
---- wangle-2021.12.20.00/wangle/bootstrap/test/BootstrapTest.cpp	2021-12-19 19:29:28.000000000 -0800
-+++ wangle-disable_failed_tests/wangle/bootstrap/test/BootstrapTest.cpp	2021-12-23 12:04:07.412647589 -0800
-@@ -353,6 +353,7 @@
+--- a/wangle/bootstrap/test/BootstrapTest.cpp
++++ b/wangle/bootstrap/test/BootstrapTest.cpp
+@@ -353,6 +353,7 @@ TEST(Bootstrap, UDP) {
    server.bind(0);
  }
  
@@ -9,7 +8,7 @@ diff -ruN wangle-2021.12.20.00/wangle/bootstrap/test/BootstrapTest.cpp wangle-di
  TEST(Bootstrap, UDPClientServerTest) {
    connections = 0;
  
-@@ -382,6 +383,7 @@
+@@ -382,6 +383,7 @@ TEST(Bootstrap, UDPClientServerTest) {
  
    EXPECT_EQ(connections, 1);
  }
@@ -17,10 +16,9 @@ diff -ruN wangle-2021.12.20.00/wangle/bootstrap/test/BootstrapTest.cpp wangle-di
  
  TEST(Bootstrap, UnixServer) {
    TestServer server;
-diff -ruN wangle-2021.12.20.00/wangle/CMakeLists.txt wangle-disable_failed_tests/wangle/CMakeLists.txt
---- wangle-2021.12.20.00/wangle/CMakeLists.txt	2021-12-19 19:29:28.000000000 -0800
-+++ wangle-disable_failed_tests/wangle/CMakeLists.txt	2021-12-23 12:01:23.779810003 -0800
-@@ -295,7 +295,9 @@
+--- a/wangle/CMakeLists.txt
++++ b/wangle/CMakeLists.txt
+@@ -291,7 +291,9 @@ if(BUILD_TESTS)
    #  add_gtest(service/test/ServiceTest.cpp ServiceTest)
    # this test requires arguments?
    #  add_gtest(ssl/test/SSLCacheTest.cpp SSLCacheTest)
