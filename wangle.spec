@@ -11,7 +11,7 @@
 
 Name:           wangle
 Version:        2023.10.16.00
-Release:        %autorelease
+Release:        %autorelease -e rv64
 Summary:        Framework for building services in a consistent/modular/composable way
 
 License:        Apache-2.0
@@ -22,7 +22,7 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-disable_failed_tests.patch
 %endif
 
-ExclusiveArch:   x86_64 aarch64 ppc64le
+ExclusiveArch:   x86_64 aarch64 ppc64le riscv64
 
 BuildRequires:  cmake
 %if %{with toolchain_clang}
